@@ -19,6 +19,18 @@ app.use('/api/users', require('./routes/users'));
 
 app.get('/api/health', (req, res) => res.json({ status: 'ok' }));
 
+app.get('/', (req, res) => res.json({
+  message: 'Tasksmanager API',
+  version: '1.0.0',
+  endpoints: {
+    health: '/api/health',
+    auth: '/api/auth',
+    users: '/api/users',
+    projects: '/api/projects',
+    tasks: '/api/tasks'
+  }
+}));
+
 // 404
 app.use((req, res) => res.status(404).json({ error: 'Route not found' }));
 
